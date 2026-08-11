@@ -1,10 +1,7 @@
 package br.com.overload.usuarioservice.model;
 
 import jakarta.persistence.*;
-
-import javax.xml.crypto.Data;
 import java.time.Instant;
-import java.util.Date;
 
 
 @Entity
