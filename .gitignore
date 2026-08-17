@@ -23,4 +23,21 @@
 hs_err_pid*
 replay_pid*
 
+#Build (Maven — cada serviço tem seu próprio target/)
+**/target/
+
+# Variáveis de ambiente / segredos
+.env
+*.env
+
+# IDE
 .idea/
+*.iml
+.vscode/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Modelagem detalhada de dados — mantida fora do repositório público (ver entities.md)
+entities.md
