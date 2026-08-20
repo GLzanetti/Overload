@@ -27,4 +27,11 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(errorResponseDTO, HttpStatus.CONFLICT);
     }
+
+    @ExceptionHandler(CredenciaisInvalidasException.class)
+    public ResponseEntity<ErrorResponseDTO> tratamentoCredenciaisInvalidasException(CredenciaisInvalidasException e, HttpServletRequest request){
+        ErrorResponseDTO errorResponseDTO = new ErrorResponseDTO(401, e.getMessage(), servico, Instant.now(), request.getRequestURI(), "CREDENCIAIS_INVALIDAS");
+
+        return new ResponseEntity<>(errorResponseDTO, HttpStatus.UNAUTHORIZED);
+    }
 }
