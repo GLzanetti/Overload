@@ -11,12 +11,18 @@ import java.io.IOException;
 @RestController
 public class GatewayController {
 
+    private final RouterService routerService;
+
+    public GatewayController(RouterService routerService) {
+        this.routerService = routerService;
+    }
+
     @RequestMapping("/**")
     public ResponseEntity<?> rotear(HttpServletRequest request) throws IOException {
         String metodo = request.getMethod();
         String path = request.getRequestURI();
         byte[] corpo = request.getInputStream().readAllBytes();
 
-        return ResponseEntity.ok("Metodo: " + metodo + "| Path: " + path);
+        return routerService.rotear(metodo, path, corpo);
     }
 }
