@@ -22,7 +22,8 @@ public class GatewayController {
         String metodo = request.getMethod();
         String path = request.getRequestURI();
         byte[] corpo = request.getInputStream().readAllBytes();
+        String header = request.getHeader("Content-Type");
 
-        return routerService.rotear(metodo, path, corpo);
+        return routerService.rotear(metodo, path, corpo, header);
     }
 }
