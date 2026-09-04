@@ -15,7 +15,7 @@ public class RouterService {
         this.gatewayProperties = gatewayProperties;
     }
 
-    public ResponseEntity<byte[]> rotear(String metodo, String path, byte[] corpo, String header){
+    public ResponseEntity<byte[]> rotear(String metodo, String path, byte[] corpo, String header, String headerUserId){
         String[] partes = path.split("/");
         String prefixo = partes[2];
         String enderecoBase = gatewayProperties.getRotas().get(prefixo);
@@ -28,6 +28,7 @@ public class RouterService {
                 .uri(urlDestino)
                 .body(corpo)
                 .header("Content-Type", header)
+                .header("X-User-Id", headerUserId)
                 .retrieve()
                 .onStatus(status -> true, ((request, response) -> {}))
                 .toEntity(byte[].class);
